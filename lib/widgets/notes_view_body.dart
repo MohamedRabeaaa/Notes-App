@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/custom_floating_button.dart';
 
 import 'appbar_notes_view.dart';
 
@@ -26,7 +25,6 @@ class NotesViewBody extends StatelessWidget {
               fontFamily: 'assets/fonts/Nunito-Light.ttf',
             ),
           ),
-          const CustomFloatingButton(),
         ],
       ),
     );

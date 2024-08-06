@@ -10,3 +10,5 @@ Icon infoIchIcon = Icon(
   size: 18,
   color: Colors.white,
 );
+
+Icon closeIcon = Icon(Icons.close);
