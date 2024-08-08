@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomTextFromField extends StatelessWidget {
   final String? hintText;
-  final Icon? icon;
+  final Icon icon;
   const CustomTextFromField({
     super.key,
     this.hintText,
-    this.icon,
+    required this.icon,
   });
 
   @override
@@ -16,11 +16,8 @@ class CustomTextFromField extends StatelessWidget {
       child: TextFormField(
         decoration: InputDecoration(
           border: OutlineInputBorder(
+            borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(25),
-            borderSide: BorderSide(
-              color: Colors.transparent,
-              width: 0.0,
-            ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
@@ -32,7 +29,12 @@ class CustomTextFromField extends StatelessWidget {
               fontFamily: 'assets/fonts/Nunito-Light.ttf'),
           filled: true,
           fillColor: const Color(0xff3B3B3B),
-          suffixIcon: icon,
+          suffixIcon: IconButton(
+            icon: icon,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           contentPadding: const EdgeInsets.symmetric(
             vertical: 10,
             horizontal: 25,

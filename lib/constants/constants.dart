@@ -12,3 +12,21 @@ Icon infoIchIcon = Icon(
 );
 
 Icon closeIcon = Icon(Icons.close);
+
+Icon isoArrowBackIcon = Icon(
+  Icons.arrow_back_ios_new,
+  color: Colors.white,
+  size: 20,
+);
+
+Icon eyeIcon = Icon(
+  Icons.remove_red_eye_outlined,
+  color: Colors.white,
+  size: 20,
+);
+
+Icon saveIcon = Icon(
+  Icons.save,
+  color: Colors.white,
+  size: 20,
+);

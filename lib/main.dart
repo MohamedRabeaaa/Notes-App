@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 
+import "views/empty_notes_view.dart";
 import "views/notes_view.dart";
 
 void main() {
@@ -17,7 +18,7 @@ class NoteApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'Nunito',
       ),
-      home: const NotesView(),
+      home: const EmptyNotesView(),
     );
   }
 }
