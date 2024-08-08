@@ -30,3 +30,5 @@ Icon saveIcon = Icon(
   color: Colors.white,
   size: 20,
 );
+
+const kNotesBox = 'notes_box';
