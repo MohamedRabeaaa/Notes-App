@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/constants.dart';
-import '../widgets/custom_text_from_field.dart';
+import '../widgets/custom_search_field.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -14,7 +14,7 @@ class SearchView extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          CustomTextFromField(
+          CustomSearchField(
             hintText: 'Search by the keyword...',
             icon: closeIcon,
           ),

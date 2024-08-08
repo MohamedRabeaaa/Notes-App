@@ -4,16 +4,19 @@ import 'package:notes_app/widgets/custom_appbar.dart';
 import 'appbar_notes_view.dart';
 
 class NoteEditingViewBody extends StatelessWidget {
-  const NoteEditingViewBody({super.key});
+  final GlobalKey<FormState> formkey;
+  const NoteEditingViewBody({super.key, required this.formkey});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 40,
         ),
-        CustomAppbar(),
+        CustomAppbar(
+          formKey: formkey,
+        ),
       ],
     );
   }

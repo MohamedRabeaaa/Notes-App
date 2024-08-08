@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import "constants/constants.dart";
 import "views/empty_notes_view.dart";
+import "views/notes_view.dart";
 
 void main() async {
   await Hive.initFlutter();
@@ -21,7 +22,7 @@ class NoteApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'Nunito',
       ),
-      home: const EmptyNotesView(),
+      home: const NotesView(),
     );
   }
 }

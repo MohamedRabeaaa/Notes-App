@@ -5,15 +5,13 @@ import 'custom_appbar_icon.dart';
 import 'save_alert_dialog.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key});
+  final GlobalKey<FormState> formKey;
+  const CustomAppbar({super.key, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // const SizedBox(
-        //   width: 10,
-        // ),
         CustomAppbarIcon(
           icon: isoArrowBackIcon,
           onPressed: () {
@@ -34,9 +32,10 @@ class CustomAppbar extends StatelessWidget {
             await showDialog(
               context: context,
               builder: (context) {
-                return const SaveAlertDialog(
+                return SaveAlertDialog(
                   text1: 'Discard',
                   text2: 'Save',
+                  formKey: formKey,
                 );
               },
             );

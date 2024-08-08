@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/constants.dart';
-import '../widgets/custom_text_from_field.dart';
+import '../widgets/custom_search_field.dart';
 
 class EmptySearchView extends StatelessWidget {
   final String? textSearch;
@@ -18,7 +18,7 @@ class EmptySearchView extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
-          CustomTextFromField(
+          CustomSearchField(
             hintText: textSearch,
             icon: closeIcon,
           ),

@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/note_editing_body.dart';
 
 class NoteEditing extends StatelessWidget {
-  const NoteEditing({super.key});
+  NoteEditing({super.key});
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          NoteEditingViewBody(),
+          NoteEditingViewBody(
+            formkey: formKey,
+          ),
         ],
       ),
     ));

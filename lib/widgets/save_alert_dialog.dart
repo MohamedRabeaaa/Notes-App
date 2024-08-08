@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import '../views/add_note_view.dart';
 
 import 'custom_elevated_button.dart';
 
-class SaveAlertDialog extends StatelessWidget {
+class SaveAlertDialog extends StatefulWidget {
   final String text1;
   final String text2;
+  final GlobalKey<FormState> formKey;
   const SaveAlertDialog({
     super.key,
     required this.text1,
     required this.text2,
+    required this.formKey,
   });
 
   @override
+  State<SaveAlertDialog> createState() => _SaveAlertDialogState();
+}
+
+class _SaveAlertDialogState extends State<SaveAlertDialog> {
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+
+  @override
   Widget build(BuildContext context) {
-    // Get the current width of the screen and subtract 25 to increase the width
     double dialogWidth = MediaQuery.of(context).size.width - 25;
 
     return Dialog(
@@ -38,7 +47,7 @@ class SaveAlertDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CustomElevatedButton(
-                  text: text1,
+                  text: widget.text1,
                   backGroundColor: const Color(0xffFF0000),
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -48,9 +57,16 @@ class SaveAlertDialog extends StatelessWidget {
                   width: 15,
                 ),
                 CustomElevatedButton(
-                  text: text2,
+                  text: widget.text2,
                   backGroundColor: const Color(0xff30BE71),
                   onPressed: () {
+                    if (widget.formKey.currentState!.validate()) {
+                      widget.formKey.currentState?.save();
+                    } else {
+                      _autovalidateMode = AutovalidateMode.always;
+
+                      setState(() {});
+                    }
                     Navigator.of(context).pop();
                   },
                 ),

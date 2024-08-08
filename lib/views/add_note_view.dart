@@ -3,6 +3,7 @@ import 'package:notes_app/widgets/custom_appbar_icon.dart';
 
 import '../constants/constants.dart';
 import '../widgets/custom_appbar.dart';
+import '../widgets/custom_text_form_field.dart';
 import '../widgets/save_alert_dialog.dart';
 
 class AddNoteView extends StatelessWidget {
@@ -11,40 +12,60 @@ class AddNoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            const CustomAppbar(),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Title',
-                hintStyle: TextStyle(
-                  fontSize: 38,
-                  color: Color(0xff9A9A9A),
-                ),
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Type something...',
-                hintStyle: TextStyle(
-                  fontSize: 22,
-                  color: Color(0xff9A9A9A),
-                ),
-              ),
-            ),
-          ],
-        ),
+        padding: EdgeInsets.all(16.0),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
+    super.key,
+  });
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  String? title, content;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 40,
+          ),
+          CustomAppbar(formKey: formKey),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomTextFormField(
+            text: 'Title',
+            fontSize: 38,
+            onSaved: (value) {
+              title = value;
+            },
+          ),
+          CustomTextFormField(
+            text: 'Type something...',
+            fontSize: 28,
+            onSaved: (value) {
+              content = value;
+            },
+          ),
+        ],
       ),
     );
   }
