@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/custom_appbar_icon.dart';
 
 import '../constants/constants.dart';
+import '../widgets/custom_appbar.dart';
 import '../widgets/save_alert_dialog.dart';
 
 class AddNoteView extends StatelessWidget {
@@ -18,41 +19,7 @@ class AddNoteView extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            Row(
-              children: [
-                // const SizedBox(
-                //   width: 10,
-                // ),
-                CustomAppbarIcon(
-                  icon: isoArrowBackIcon,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                Spacer(),
-                CustomAppbarIcon(
-                  icon: eyeIcon,
-                  onPressed: () {},
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                CustomAppbarIcon(
-                  icon: saveIcon,
-                  onPressed: () async {
-                    await showDialog(
-                      context: context,
-                      builder: (context) {
-                        return const SaveAlertDialog(
-                          text1: 'Discard',
-                          text2: 'Save',
-                        );
-                      },
-                    );
-                  },
-                ),
-              ],
-            ),
+            const CustomAppbar(),
             const SizedBox(
               height: 20,
             ),

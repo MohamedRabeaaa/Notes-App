@@ -13,44 +13,52 @@ class SaveAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      content: const Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Icon(Icons.info_outline),
-          SizedBox(
-            height: 20,
-          ),
-          Text('Save changes ?'),
-          SizedBox(
-            height: 10,
-          ),
-        ],
-      ),
-      actions: [
-        Row(
+    // Get the current width of the screen and subtract 25 to increase the width
+    double dialogWidth = MediaQuery.of(context).size.width - 25;
+
+    return Dialog(
+      child: Container(
+        width: dialogWidth,
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            CustomElevatedButton(
-              text: text1,
-              backGroundColor: const Color(0xffFF0000),
-              onPressed: () {},
-            ),
             const SizedBox(
-              width: 15,
+              height: 10,
             ),
-            CustomElevatedButton(
-              text: text2,
-              backGroundColor: const Color(0xff30BE71),
-              onPressed: () {},
+            const Icon(Icons.info_outline),
+            const SizedBox(
+              height: 20,
             ),
+            const Text('Save changes ?'),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                CustomElevatedButton(
+                  text: text1,
+                  backGroundColor: const Color(0xffFF0000),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+                CustomElevatedButton(
+                  text: text2,
+                  backGroundColor: const Color(0xff30BE71),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            )
           ],
-        )
-      ],
+        ),
+      ),
     );
   }
 }
