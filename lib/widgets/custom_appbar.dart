@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-
-import '../constants/constants.dart';
+import 'package:notes_app/constants/constants.dart';
 import 'custom_appbar_icon.dart';
+import 'notes_list_view.dart';
 import 'save_alert_dialog.dart';
 
 class CustomAppbar extends StatelessWidget {
-  final GlobalKey<FormState> formKey;
-  const CustomAppbar({super.key, required this.formKey});
+  final VoidCallback onSavePressed;
+
+  const CustomAppbar({
+    super.key,
+    required this.onSavePressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +22,22 @@ class CustomAppbar extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        Spacer(),
+        const Spacer(),
         CustomAppbarIcon(
           icon: eyeIcon,
-          onPressed: () {},
-        ),
-        const SizedBox(
-          width: 15,
-        ),
-        CustomAppbarIcon(
-          icon: saveIcon,
-          onPressed: () async {
-            await showDialog(
-              context: context,
-              builder: (context) {
-                return SaveAlertDialog(
-                  text1: 'Discard',
-                  text2: 'Save',
-                  formKey: formKey,
-                );
-              },
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NotesListView(),
+              ),
             );
           },
+        ),
+        const SizedBox(width: 15),
+        CustomAppbarIcon(
+          icon: saveIcon,
+          onPressed: onSavePressed,
         ),
       ],
     );

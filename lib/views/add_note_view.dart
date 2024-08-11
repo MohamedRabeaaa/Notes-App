@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/custom_appbar_icon.dart';
-
-import '../constants/constants.dart';
 import '../widgets/custom_appbar.dart';
+import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
-import '../widgets/save_alert_dialog.dart';
 
 class AddNoteView extends StatelessWidget {
   final Color? backgroundColor;
@@ -22,19 +19,15 @@ class AddNoteView extends StatelessWidget {
 }
 
 class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({
-    super.key,
-  });
+  const AddNoteForm({super.key});
 
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
 
 class _AddNoteFormState extends State<AddNoteForm> {
-  final GlobalKey<FormState> formKey = GlobalKey();
-
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
   String? title, content;
 
   @override
@@ -44,26 +37,33 @@ class _AddNoteFormState extends State<AddNoteForm> {
       autovalidateMode: autovalidateMode,
       child: Column(
         children: [
-          const SizedBox(
-            height: 40,
+          const SizedBox(height: 40),
+          CustomAppbar(
+            onSavePressed: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+                // Save the note data here.
+              } else {
+                setState(() {
+                  autovalidateMode = AutovalidateMode.always;
+                });
+              }
+            },
           ),
-          CustomAppbar(formKey: formKey),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           CustomTextFormField(
-            text: 'Title',
-            fontSize: 38,
             onSaved: (value) {
               title = value;
             },
+            text: 'Title',
+            fontSize: 38,
           ),
           CustomTextFormField(
-            text: 'Type something...',
-            fontSize: 28,
             onSaved: (value) {
               content = value;
             },
+            text: 'Type something...',
+            fontSize: 28,
           ),
         ],
       ),
