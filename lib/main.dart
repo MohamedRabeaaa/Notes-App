@@ -1,9 +1,7 @@
 import "package:flutter/material.dart";
-import 'package:hive_flutter/hive_flutter.dart';
-
-import "constants/constants.dart";
+import "package:notes_app/constants/constants.dart";
 import "views/empty_notes_view.dart";
-import "views/notes_view.dart";
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -22,7 +20,7 @@ class NoteApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'Nunito',
       ),
-      home: const NotesView(),
+      home: const EmptyNotesView(),
     );
   }
 }
