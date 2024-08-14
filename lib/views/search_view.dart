@@ -9,16 +9,23 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 50,
-          ),
-          CustomSearchField(
-            hintText: 'Search by the keyword...',
-            icon: closeIcon,
-          ),
-        ],
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: CustomSearchField(
+                hintText: 'Search by the keyword...',
+                icon: closeIcon,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/custom_notes_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Blocs/cubits/fetch_notes_cubit/fetch_notes_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 
-class NotesListView extends StatelessWidget {
-  const NotesListView({super.key});
+import '../widgets/custom_notes_item.dart';
+
+class NotesListView extends StatefulWidget {
+  const NotesListView({Key? key}) : super(key: key);
 
   @override
+  State<NotesListView> createState() => _NotesListViewState();
+}
+
+class _NotesListViewState extends State<NotesListView> {
+  @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        // padding:  EdgeInsets.zero,
-        itemCount: 10,
+    return BlocBuilder<FetchNotesCubit, FetchNotesState>(
+        builder: (context, state) {
+      List<Note> notes = BlocProvider.of<FetchNotesCubit>(context).notes ?? [];
+      return ListView.builder(
+        itemCount: notes.length,
         itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: NotesItem(
-              title: 'Valorant is a shooting game',
-            ),
+          return NotesItem(
+            notes: notes[index],
           );
-        });
+        },
+      );
+    });
   }
 }

@@ -19,9 +19,7 @@ class AppbarNotesView extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
         ),
-        const SizedBox(
-          width: 120,
-        ),
+        const Spacer(),
         CustomAppbarIcon(
           icon: searchIcon,
           onPressed: () {
@@ -33,9 +31,7 @@ class AppbarNotesView extends StatelessWidget {
             );
           },
         ),
-        const SizedBox(
-          width: 15,
-        ),
+        const SizedBox(width: 15),
         CustomAppbarIcon(
           icon: infoIchIcon,
           onPressed: () async {

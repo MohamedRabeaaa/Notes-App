@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
-
+import '../models/note_model.dart';
 import '../widgets/custom_floating_button.dart';
 import '../widgets/empty_notes_view_body.dart';
-import 'add_note_view.dart';
 
 class EmptyNotesView extends StatelessWidget {
-  const EmptyNotesView({super.key});
+  const EmptyNotesView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      floatingActionButton: CustomFloatingActionButton(),
-      body: EmptyNotesViewBody(),
+    return Scaffold(
+      floatingActionButton: const CustomFloatingActionButton(),
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: const EmptyNotesViewBody(),
+        ),
+      ),
     );
   }
 }

@@ -13,26 +13,28 @@ class EmptySearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 50,
-          ),
-          CustomSearchField(
-            hintText: textSearch,
-            icon: closeIcon,
-          ),
-          const SizedBox(
-            height: 120,
-          ),
-          Image.asset('assets/images/empty search.png'),
-          Text(
-            'File not found. Try searching again.',
-            style: TextStyle(
-              fontFamily: 'assets/fonts/Nunito-Light.ttf',
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 50,
             ),
-          ),
-        ],
+            CustomSearchField(
+              hintText: textSearch,
+              icon: closeIcon,
+            ),
+            const SizedBox(
+              height: 120,
+            ),
+            Image.asset('assets/images/empty search.png'),
+            Text(
+              'File not found. Try searching again.',
+              style: TextStyle(
+                fontFamily: 'assets/fonts/Nunito-Light.ttf',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
