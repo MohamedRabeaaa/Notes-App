@@ -33,7 +33,7 @@ class _NoteEditingViewBodyState extends State<NoteEditingViewBody> {
             widget.note.content = content ?? widget.note.content;
             widget.note.save();
             BlocProvider.of<FetchNotesCubit>(context).fetchAllNotes();
-            Navigator.push(context,
+            Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const NotesView()));
           },
         ),
