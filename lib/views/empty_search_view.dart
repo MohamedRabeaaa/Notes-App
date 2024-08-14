@@ -27,7 +27,7 @@ class EmptySearchView extends StatelessWidget {
               height: 120,
             ),
             Image.asset('assets/images/empty search.png'),
-            Text(
+            const Text(
               'File not found. Try searching again.',
               style: TextStyle(
                 fontFamily: 'assets/fonts/Nunito-Light.ttf',

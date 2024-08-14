@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/note_model.dart';
 import '../widgets/custom_floating_button.dart';
 import '../widgets/empty_notes_view_body.dart';
 
