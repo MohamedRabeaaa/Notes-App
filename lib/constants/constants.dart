@@ -31,13 +31,14 @@ Icon saveIcon = Icon(
   size: 20,
 );
 
-List<Color> colors = const [
+List<Color> kColors = const [
   Color(0xffFF9E9E),
   Color(0xff91F48F),
   Color(0xffFFF599),
   Color(0xff9EFFFF),
   Color(0xffB69CFF),
   Color(0xffFD99FF),
+  Colors.blue,
 ];
 
 const kNotesBox = 'notes_box';
